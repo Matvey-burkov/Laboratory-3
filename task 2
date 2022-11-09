@@ -1,0 +1,50 @@
+#define _CRT_SECURE_NO_WARNINGS// от ошибки 4996
+#include <stdio.h> //ввод вывод 
+#include <locale.h> // для задач с локализацией
+
+int main()// функция
+{
+    setlocale(LC_ALL, "ru");// для вывода текста на русский
+
+    double routeLength = 100, distanceInOneDay = 10 ,doubledistance;// переменная
+
+    int days = 1;// еще 1 переменная 
+
+    float percent;// и еще 1 переменная
+
+    FILE* input, * output;// определяет поток
+
+    output = fopen("pohod.txt", "r");// выход при открытии файла для чтения
+
+
+
+
+    if (output == 0)// условие 
+    {
+        printf("Ошибка при окрытии файла\n");//возвращает количество символов
+        return 1;// повторение
+    }
+    fscanf(output, "%f%f", &routeLength, &distanceInOneDay);//. считывает данные из стандартного потока, % f 
+вывода чисел с плавающей точкой
+  
+        fclose(output);// закрытие 
+
+    printf("\n\tДлинна пути = %0.0f\n\tПройденное расстояние за 1 день = %0.0f\n", routeLength,
+        distanceInOneDay);// горизонт.табуляция/t,/n новая строка
+
+    input = fopen("result.txt", "w");// открытие 
+
+    for (distanceInOneDay; distanceInOneDay < routeLength; )// цикл
+
+    {
+        doubledistance = distanceInOneDay * 1.15;// 
+        routeLength += distanceInOneDay;
+        days++;
+    }
+    fprintf(input, "Путешественник потратит на маршрут\n\t %d дней", days);// форматирует и выводит набор 
+символов, % d читать десятичное число
+
+
+    printf("результат записан в папке resulte.txt");
+            return 0;/ повторение
+}
