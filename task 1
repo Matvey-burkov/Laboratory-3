@@ -1,0 +1,56 @@
+#include <iostream>// для cin cout ...
+#include <fstream>// функционал для считывания данных
+#include <cmath>// математическач библиотека
+using namespace std;// облако для стандартных функций
+
+double log(double a, double b)// Значение с плавающей точкой
+{
+    return log(b) / log(a);// 
+}
+
+
+
+int main()// функция
+{
+    setlocale(LC_ALL, "ru");// для вывода текста на русский
+
+    ifstream input;// для чтения
+    ofstream output("R.txt");
+    ofstream output("stepen.txt");// для записи
+
+    
+    double R;// переменная
+    double a = 3;// переменная
+    cout << "Введите значение R: ";// вывод на экран
+    cin >> R;// присвоение 
+
+    output << R;// выход
+    output.close();// закрыть 
+
+    input.open("R.txt");// вход
+    if (input.fail())// условие 
+    {
+        cout << "неудалось открыть файл";// выовод на экран
+        return 1;// повторение
+    }
+
+    input >> R;// открыть 
+    input.close();// закрыть 
+
+    output << "X = " << log(a, R);// вывод логарифма
+    output.close();// закрыть 
+
+    if (R <= 0)// условие 
+    {
+        cout << "Введите положительное значение R";// вывод на экран 
+    }
+
+
+    cout << "x = " << log(a, R) << " Результат записан в stepen.txt";// вывод на экран
+
+
+    
+    return 0;// повторение
+
+}
+
